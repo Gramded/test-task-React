@@ -1,0 +1,35 @@
+body {
+  background-color: gray;
+}
+
+.work_place {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  height: 800px;
+  margin: 20px auto;
+  background-color: white;
+}
+
+.work_place-ethernet,
+.work_place-wireless{
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.ethernet-ip {
+  display: flex;
+  width: 100%;
+  height: max-content;
+}
+
+.max_b {
+  color: black;
+}
+
+.max_v {
+  color: violet;
+}

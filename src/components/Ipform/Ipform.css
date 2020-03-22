@@ -1,0 +1,12 @@
+.ip-form {
+
+}
+
+.ip-form_inputs {
+
+}
+
+.ip-form_inputs.disabled {
+    opacity: 0.4;
+    user-select: none;
+}
