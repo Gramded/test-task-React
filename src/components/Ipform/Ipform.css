@@ -3,7 +3,9 @@
 }
 
 .ip-form_inputs {
-
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .ip-form_inputs.disabled {
