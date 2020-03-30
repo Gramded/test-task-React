@@ -9,13 +9,31 @@ import Wifipassword from "../Wifipassword/Wifipassword";
 
 export default class Wireless extends React.Component{
 
-    state = {wifi: false, ip_form: false};
+    state = {wifi: false, ip_form: false, dns_form: false};
+
 
     setWifiMod = () => {
         this.setState((state) => {
             return {wifi: !state.wifi}
         });
+        this.updateDataIp(true);
+        let bug_fix = document.getElementById('wir_ip_1').childNodes;
+        console.log(this.state)
+        if (this.state.wifi == true) {
+            bug_fix.forEach((item) => {
+                item.control.setAttribute("disabled", 'true')
+            })
+        } else if (this.state.wifi !== true && this.state.ip_form == true) {
+            bug_fix.forEach((item) => {
+                item.control.removeAttribute("disabled")
+            })
+        }
     };
+
+    updateDataIp = (arg) => {
+        this.setState(() => { return { ip_form: arg }})
+    };
+
 
     render() {
         return (
@@ -28,11 +46,13 @@ export default class Wireless extends React.Component{
                  <Wifipassword wifi_mod={this.state.wifi}
                         text={'Security key'}/>
                 <Ipform name={"wir_ip"}
-                        updateData={this.props.updateData}
                         wifi_mod={!this.state.wifi}
+                        wifi_mod_ip={this.state.wifi}
+                        updateDataIp={this.updateDataIp}
                         dataToState={this.props.dataToState}/>
                 <Dnsform name={"wir_dns"}
                          wifi_mod={!this.state.wifi}
+                         updateDataIp={this.updateDataIp}
                          dataToState={this.props.dataToState}/>
             </div>
         )
