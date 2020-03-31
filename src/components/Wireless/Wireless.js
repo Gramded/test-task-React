@@ -13,17 +13,15 @@ export default class Wireless extends React.Component{
 
 
     setWifiMod = () => {
-        this.setState((state) => {
-            return {wifi: !state.wifi}
-        });
-        this.updateDataIp(true);
+        setTimeout( () => {console.log(this.state)}, 100);
+        this.setState({wifi: !this.state.wifi});
+        setTimeout( () => {this.updateDataIp(!this.state.ip_form)}, 100);
         let bug_fix = document.getElementById('wir_ip_1').childNodes;
-        console.log(this.state)
-        if (this.state.wifi == true) {
+        if (this.state.wifi === true) {
             bug_fix.forEach((item) => {
                 item.control.setAttribute("disabled", 'true')
             })
-        } else if (this.state.wifi !== true && this.state.ip_form == true) {
+        } else if (this.state.wifi !== true && this.state.ip_form === true) {
             bug_fix.forEach((item) => {
                 item.control.removeAttribute("disabled")
             })
@@ -31,7 +29,7 @@ export default class Wireless extends React.Component{
     };
 
     updateDataIp = (arg) => {
-        this.setState(() => { return { ip_form: arg }})
+        this.setState( { ip_form: arg });
     };
 
 

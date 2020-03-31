@@ -11,12 +11,13 @@ export default class Ipform extends React.Component{
 
 
     onModeChange = () => {
-        this.setState((state) => {
-            return {mode_on_of: !state.mode_on_of, wifi_mod: this.props.wifi_mod_ip}});
-        console.log(this.state);
-        if (this.state.wifi_mod == true) {
-            this.props.updateDataIp(this.state.mode_on_of);
-        }
+
+        this.setState({mode_on_of: !this.state.mode_on_of, wifi_mod: this.props.wifi_mod_ip});
+        setTimeout(() => {this.state.wifi_mod == true ? this.props.updateDataIp(this.state.mode_on_of) : console.log('hi')}, 100)
+        setTimeout(() => {console.log(this.state)}, 100)
+        // (if (this.state.wifi_mod == true) {
+        //     this.props.updateDataIp(this.state.mode_on_of);
+        // }
     };
 
 
@@ -29,6 +30,7 @@ export default class Ipform extends React.Component{
                    name={this.props.name}
                    defaultChecked
                    value="automate"
+                   disabled={this.props.wifi_mod}
                    onChange={this.onModeChange}/>
                 автоматически получить ip
             </label>
