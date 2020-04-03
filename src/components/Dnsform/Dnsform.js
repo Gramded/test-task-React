@@ -4,28 +4,17 @@ import './Dnsform.css';
 
 export default class Dnsform extends React.Component{
 
-    state = {mode: "automate"};
     name = 'name';
-    wifi_mod = false;
+    wifi_mod_dns = false;
+    state = {auto_mod: true, wifi_mod: this.wifi_mod_dns};
 
-    onModeChange = (event) => {
-        this.setState({mode: event.target.value});
-        this.inputDisabler(event)
+    onModeChange = () => {
+        this.setState({auto_mod: !this.state.auto_mod, wifi_mod: this.props.wifi_mod_dns});
+        setTimeout(() => {if (this.state.wifi_mod == true) {this.props.updateDataDNS(this.state.auto_mod)}}, 100);
+        setTimeout(() => {console.log(this.state)}, 100);
+        this.props.dataInputMode(`auto_mode_${this.props.name}_${!this.state.auto_mod}`)
     };
 
-    inputDisabler () {
-        let test = document.getElementById(`${this.props.name}_1`).childNodes;
-        console.log(this.state);
-        if (this.state.mode === "automate") {
-            test.forEach((item) => {
-                item.control.removeAttribute('disabled');
-            })
-        } else {
-            for (let i = 0; i < test.length; i++) {
-                test[i].control.setAttribute('disabled', "true")
-            }
-        }
-    };
 
     render() {
         return (
@@ -36,6 +25,7 @@ export default class Dnsform extends React.Component{
                            name={this.props.name}
                            defaultChecked
                            value="automate"
+                           disabled={this.props.wifi_mod}
                            onChange={this.onModeChange}/>
                     автоматически получить dns
                 </label>
@@ -50,17 +40,19 @@ export default class Dnsform extends React.Component{
                 </label>
                 <div
                     id={this.props.name + "_1"}
-                    className={this.state.mode === "automate" ?  "ip-form_inputs disabled" : 'ip-form_inputs'}>
+                    className={this.state.auto_mod === true ?  "ip-form_inputs disabled" : 'ip-form_inputs'}>
                     <Input
                         text={'Preferred DNS server'}
                         id={`${this.props.name}_preferred`}
                         important
+                        disabled={this.state.auto_mod}
                         dataToState={this.props.dataToState}
                         class_name={"test-class2"}/>
                     <Input
                         text={'Alternative DNS server'}
                         id={`${this.props.name}_alternative`}
                         dataToState={this.props.dataToState}
+                        disabled={this.state.auto_mod}
                         class_name={"test-class2"}/>
                 </div>
             </div>

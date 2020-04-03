@@ -16,20 +16,36 @@ export default class Wireless extends React.Component{
         setTimeout( () => {console.log(this.state)}, 100);
         this.setState({wifi: !this.state.wifi});
         setTimeout( () => {this.updateDataIp(!this.state.ip_form)}, 100);
-        let bug_fix = document.getElementById('wir_ip_1').childNodes;
+        setTimeout( () => {this.updateDataDNS(!this.state.dns_form)}, 100);
+        let bug_fix_ip = document.getElementById('wir_ip_1').childNodes;
+        let bug_fix_dns = document.getElementById('wir_dns_1').childNodes;
         if (this.state.wifi === true) {
-            bug_fix.forEach((item) => {
+            bug_fix_ip.forEach((item) => {
                 item.control.setAttribute("disabled", 'true')
             })
         } else if (this.state.wifi !== true && this.state.ip_form === true) {
-            bug_fix.forEach((item) => {
+            bug_fix_ip.forEach((item) => {
                 item.control.removeAttribute("disabled")
             })
         }
+        if (this.state.wifi === true) {
+            bug_fix_dns.forEach((item) => {
+                item.control.setAttribute("disabled", 'true')
+            })
+        } else if (this.state.wifi !== true && this.state.dns_form === true) {
+            bug_fix_dns.forEach((item) => {
+                item.control.removeAttribute("disabled")
+            })
+        }
+        this.props.dataWirMod(`wir_mod_${!this.state.wifi}`);
     };
 
     updateDataIp = (arg) => {
         this.setState( { ip_form: arg });
+    };
+
+    updateDataDNS = (arg) => {
+        this.setState( { dns_form: arg });
     };
 
 
@@ -47,10 +63,13 @@ export default class Wireless extends React.Component{
                         wifi_mod={!this.state.wifi}
                         wifi_mod_ip={this.state.wifi}
                         updateDataIp={this.updateDataIp}
+                        dataInputMode={this.props.dataInputMode}
                         dataToState={this.props.dataToState}/>
                 <Dnsform name={"wir_dns"}
                          wifi_mod={!this.state.wifi}
-                         updateDataIp={this.updateDataIp}
+                         wifi_mod_dns={this.state.wifi}
+                         dataInputMode={this.props.dataInputMode}
+                         updateDataDNS={this.updateDataDNS}
                          dataToState={this.props.dataToState}/>
             </div>
         )

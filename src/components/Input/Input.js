@@ -7,8 +7,9 @@ const Input = ({text, id, important=false, dataToState, textType=false, class_na
 
     const onChangeHandler = (event) => {
         setValue(event.target.value);
-        dataToState(id, value);
+        dataToState(id, event.target.value);
     };
+
 
     return (
     <label htmlFor={id}>

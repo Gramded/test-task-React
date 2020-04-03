@@ -6,18 +6,19 @@ export default class Ipform extends React.Component{
 
     name = "name";
     wifi_mod_ip = false;
-    state = {mode_on_of: true, wifi_mod: this.wifi_mod_ip};
+    state = {auto_mod: true, wifi_mod: this.wifi_mod_ip};
+    // dataTest;
 
 
 
     onModeChange = () => {
-
-        this.setState({mode_on_of: !this.state.mode_on_of, wifi_mod: this.props.wifi_mod_ip});
-        setTimeout(() => {this.state.wifi_mod == true ? this.props.updateDataIp(this.state.mode_on_of) : console.log('hi')}, 100)
-        setTimeout(() => {console.log(this.state)}, 100)
+        this.setState({auto_mod: !this.state.auto_mod, wifi_mod: this.props.wifi_mod_ip});
+        setTimeout(() => {if (this.state.wifi_mod == true) {this.props.updateDataIp(this.state.auto_mod)}}, 100);
+        setTimeout(() => {console.log(this.state)}, 100);
         // (if (this.state.wifi_mod == true) {
-        //     this.props.updateDataIp(this.state.mode_on_of);
+        //     this.props.updateDataIp(this.state.auto_mod);
         // }
+        this.props.dataInputMode(`auto_mod_${this.props.name}_${!this.state.auto_mod}`);
     };
 
 
@@ -45,20 +46,20 @@ export default class Ipform extends React.Component{
             </label>
             <div
                 id={this.props.name + "_1"}
-                className={this.state.mode_on_of === true ?  "ip-form_inputs disabled" : 'ip-form_inputs'}>
+                className={this.state.auto_mod === true ?  "ip-form_inputs disabled" : 'ip-form_inputs'}>
                 <Input text={'IP address'}
                        id={`${this.props.name}_address`}
                        important
-                       disabled={this.state.mode_on_of}
+                       disabled={this.state.auto_mod}
                        dataToState={this.props.dataToState} />
                 <Input text={'Subnet Mask'}
                        id={`${this.props.name}_subnet_mask`}
                        important
-                       disabled={this.state.mode_on_of}
+                       disabled={this.state.auto_mod}
                        dataToState={this.props.dataToState} />
                 <Input text={"Default Gateway"}
                        id={`${this.props.name}_def_get`}
-                       disabled={this.state.mode_on_of}
+                       disabled={this.state.auto_mod}
                        dataToState={this.props.dataToState} textType />
             </div>
         </div>

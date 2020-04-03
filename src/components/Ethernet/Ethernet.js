@@ -9,8 +9,14 @@ export default class Ethernet extends React.Component{
         return (
             <div>
                 <h2>Ethernet Settings</h2>
-                <Ipform name={'eth_ip'} dataToState={this.props.dataToState}/>
-                <Dnsform name={'eth_dns'} dataToState={this.props.dataToState}/>
+                <Ipform name={'eth_ip'}
+                        wifi_mod_ip={'off'}
+                        dataInputMode={this.props.dataInputMode}
+                        dataToState={this.props.dataToState}/>
+                <Dnsform name={'eth_dns'}
+                         wifi_mod_dns={'off'}
+                         dataInputMode={this.props.dataInputMode}
+                         dataToState={this.props.dataToState}/>
             </div>
         )
     }
