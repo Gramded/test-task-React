@@ -10,8 +10,7 @@ export default class Dnsform extends React.Component{
 
     onModeChange = () => {
         this.setState({auto_mod: !this.state.auto_mod, wifi_mod: this.props.wifi_mod_dns});
-        setTimeout(() => {if (this.state.wifi_mod == true) {this.props.updateDataDNS(this.state.auto_mod)}}, 100);
-        setTimeout(() => {console.log(this.state)}, 100);
+        setTimeout(() => {if (this.state.wifi_mod === true) {this.props.updateDataDNS(this.state.auto_mod)}}, 100);
         this.props.dataInputMode(`auto_mode_${this.props.name}_${!this.state.auto_mod}`)
     };
 

@@ -13,8 +13,7 @@ export default class Ipform extends React.Component{
 
     onModeChange = () => {
         this.setState({auto_mod: !this.state.auto_mod, wifi_mod: this.props.wifi_mod_ip});
-        setTimeout(() => {if (this.state.wifi_mod == true) {this.props.updateDataIp(this.state.auto_mod)}}, 100);
-        setTimeout(() => {console.log(this.state)}, 100);
+        setTimeout(() => {if (this.state.wifi_mod === true) {this.props.updateDataIp(this.state.auto_mod)}}, 100);
         // (if (this.state.wifi_mod == true) {
         //     this.props.updateDataIp(this.state.auto_mod);
         // }

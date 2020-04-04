@@ -6,7 +6,7 @@ const Input = ({text, id, important=false, dataToState, textType=false, class_na
     const [value, setValue] = useState("");
 
     const onChangeHandler = (event) => {
-        setValue(event.target.value);
+        setValue(`${event.target.value}`);
         dataToState(id, event.target.value);
     };
 
@@ -14,9 +14,9 @@ const Input = ({text, id, important=false, dataToState, textType=false, class_na
     return (
     <label htmlFor={id}>
         {text}:{important ? "*" : ''}
-        <input type={textType ? "text" : "number"}
+        <input type={textType ? "text" : "text"} // !!! заменил второй "number" на "text", тк возникала ощибка с точкой
                id={id}
-               onChange={onChangeHandler}
+               onInput={onChangeHandler}
                value={value}
                className={class_name}
                disabled={disabled}
