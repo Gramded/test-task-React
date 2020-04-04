@@ -13,7 +13,6 @@ export default class Wireless extends React.Component{
 
 
     setWifiMod = () => {
-        setTimeout( () => {console.log(this.state)}, 100);
         this.setState({wifi: !this.state.wifi});
         setTimeout( () => {this.updateDataIp(!this.state.ip_form)}, 100);
         setTimeout( () => {this.updateDataDNS(!this.state.dns_form)}, 100);

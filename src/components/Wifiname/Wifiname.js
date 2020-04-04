@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Wifiname.css';
 
 const Wifiname = ({text, id, name, disabled=true, dataToState, value_1, value_2, value_3}) => {
 
@@ -11,7 +12,7 @@ const Wifiname = ({text, id, name, disabled=true, dataToState, value_1, value_2,
     };
 
     return (
-        <div>
+        <div className={'wifi-name-block'}>
         <label htmlFor={id}>
             {text}
             <select id={id}

@@ -11,7 +11,8 @@ export default class Wifilogin extends React.Component{
 
         return (
             <div className=''>
-                <label htmlFor={"wireless_name"}>
+                <label htmlFor={"wireless_name"}
+                       className={"wifi-mod-check"}>
                     <input id={'wireless_name'}
                            type='checkbox'
                            checked={this.props.wifi}
@@ -28,6 +29,9 @@ export default class Wifilogin extends React.Component{
                         value_2={'name_2'}
                         value_3={'name_3'}
                     />
+                 <button
+                     disabled={!this.props.wifi_mod}
+                     className={'wifilogin-refresh-btn'}>&#8634;</button>
             </div>
         );
     }
