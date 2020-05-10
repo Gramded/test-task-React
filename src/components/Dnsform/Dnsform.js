@@ -18,6 +18,9 @@ export default class Dnsform extends React.Component{
     render() {
         return (
             <div className='dns-form'>
+                <div className={
+                    !this.props.wifi_mod_dns === false ? "check_box_dns" : "check_box_dns  off"
+                }>
                 <label htmlFor='ip_auto'>
                     <input id='ip_auto'
                            type='radio'
@@ -37,6 +40,7 @@ export default class Dnsform extends React.Component{
                            onChange={this.onModeChange}/>
                     я введу dns руками
                 </label>
+                </div>
                 <div
                     id={this.props.name + "_1"}
                     className={this.state.auto_mod === true ?  "ip-form_inputs disabled" : 'ip-form_inputs'}>

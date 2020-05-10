@@ -25,6 +25,9 @@ export default class Ipform extends React.Component{
      render() {
          return (
         <div className='ip-form'>
+            <div className={
+                !this.props.wifi_mod_ip === false ? "check_box_ip" : "check_box_ip  off"
+            }>
             <label htmlFor='ip_auto'>
             <input id='ip_auto' type='radio'
                    name={this.props.name}
@@ -43,6 +46,7 @@ export default class Ipform extends React.Component{
                    onChange={this.onModeChange}/>
                 я введу ip руками
             </label>
+            </div>
             <div
                 id={this.props.name + "_1"}
                 className={this.state.auto_mod === true ?  "ip-form_inputs disabled" : 'ip-form_inputs'}>

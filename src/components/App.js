@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './normalize.css';
 import Ethernet from './Ethernet/Ethernet';
 import Wireless from  './Wireless/Wireless';
 
@@ -197,14 +198,17 @@ export default class App extends React.Component{
     render() {
         return (
             <div className="app">
+                <div className="input_place">
             <Ethernet
+                class_name="work_place-ethernet"
                 dataInputMode={this.dataInputMode}
                 dataToState={this.dataToState}/>
             <Wireless
                 dataInputMode={this.dataInputMode}
                 dataWirMod={this.dataWirMod}
                 dataToState={this.dataToState}/>
-            <button onClick={this.sendJSON}>Save</button>
+                </div>
+            <button className='send_btn' onClick={this.sendJSON}>Save</button>
             </div>
         )
     }

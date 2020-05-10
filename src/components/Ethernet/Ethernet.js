@@ -5,9 +5,10 @@ import Dnsform from "../Dnsform/Dnsform";
 
 export default class Ethernet extends React.Component{
 
+
     render() {
         return (
-            <div>
+            <div className={'work_place-ethernet'}>
                 <h2>Ethernet Settings</h2>
                 <Ipform name={'eth_ip'}
                         wifi_mod_ip={'off'}

@@ -1,0 +1,12 @@
+
+
+@media (max-width: 1200px) {
+    .check_box_dns{
+        display: flex;
+        flex-direction: column;
+    }
+
+    label:nth-child(2) {
+        margin-left: 0;
+    }
+}

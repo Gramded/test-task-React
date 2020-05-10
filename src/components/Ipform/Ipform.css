@@ -1,5 +1,5 @@
 .ip-form {
-
+    margin-bottom: 25px;
 }
 
 .ip-form_inputs {
@@ -11,4 +11,11 @@
 .ip-form_inputs.disabled {
     opacity: 0.4;
     user-select: none;
+}
+
+@media (max-width: 1200px) {
+    .check_box_ip {
+        display: flex;
+        flex-direction: column;
+    }
 }
